@@ -13,7 +13,7 @@
                     label="手机号码"
                     placeholder="请输入手机号码"
                     required
-                    :rules="[{ validator:isPhone, message: '请填写正确的手机号码' }]"
+                    :rules="[{ validator:isPhone, message: '请填写输入的手机号码' }]"
                 />
                 <van-field
                     v-model="values.pwd"
@@ -24,7 +24,18 @@
                     required
                     :error="false"
                     placeholder="请输入密码"
-                    :rules="[{ validator:isPwd, message: '密码必须含有数字与字母,长度6-16位' }]"
+                    :rules="[{ validator:isPwd, message: '密码必须含有数字与字母,长度6~16位' }]"
+                />
+                <van-field
+                    v-model="values.name"
+                    type="text"
+                    name="name"
+                    label="用户名"
+                    clearable
+                    required
+                    :error="false"
+                    placeholder="请输入用户名"
+                    :rules="[{ validator:isName, message: '请输入2~10位用户名' }]"
                 />
                 <div class="reg-check">
                     <van-field
@@ -58,6 +69,7 @@ export default {
                 phone: '15659914166',
                 pwd: 'a1565991416',
                 sms:"",
+                name:""
             },
             sec:0,
             text:"获取验证码",
@@ -109,6 +121,9 @@ export default {
         },
         isPwd(val){
             return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/.test(val);
+        },
+        isName(val){
+            return /^[\u4e00-\u9fa5_a-zA-Z0-9]{2,10}$/.test(val);
         }
     },
     created(){

@@ -63,6 +63,14 @@ const router=new Router({
             meta:{
               name:"注册"
             }
+          },
+          {
+            path:"/login",
+            name:"login",
+            component:()=>import('@/pages/user/login'),
+            meta:{
+              name:"登录"
+            }
           }
       ]
 })

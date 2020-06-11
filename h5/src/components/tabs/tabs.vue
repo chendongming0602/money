@@ -64,6 +64,7 @@ export default {
         bottom: 0;
         width: 100%;
         z-index: 999;
+        background: #fff;
         div{
             flex-grow: 1;
             font-size: 12px;
