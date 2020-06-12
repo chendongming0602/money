@@ -29,13 +29,14 @@ export default {
         tabsEvent(i){
             let {index}=i;
             if(index===this.index) return;
+            //store进行保存目前在哪个tab
+            this.$store.commit("tab",index);
             this.index=index;
             this.tabEvent(index);
-            console.log(index)
         }
     },
     created(){
-        this.tabEvent(this.index);
+        this.tabsEvent({index:this.$store.getters.tab});
     },
     components:{
         Tabs

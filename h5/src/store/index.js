@@ -2,30 +2,25 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 const state={//要设置的全局访问的state对象
-    userInfo:{},//用户信息
-    token:"",
-    sms:0,//手机验证码
+    //手机验证码
+    sms:0,
+    //保存目前在哪个tab
+    tab:0,
 };
 const getters={//读取值(this.$store.getters.isList)
-    info(state){
-        return state.userInfo
-    },
-    getToken(state){
-        return state.token
-    },
     sms(state){
         return state.sms
+    },
+    tab(state){
+        return state.tab
     }
 };
 const mutations={//同步修改值(this.$store.commit("changeList",this.list2);)
-    userInfo(state,value){
-        state.userInfo=value
-    },
-    tokenMuta(state,value){
-        state.token=value
-    },
     sms(state,value){
         state.sms=value
+    },
+    tab(state,value){
+        state.tab=value
     }
 }
 const actions={//异步修改值(this.$store.dispatch('actionChange',this.list3))

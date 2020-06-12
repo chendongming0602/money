@@ -71,6 +71,14 @@ const router=new Router({
             meta:{
               name:"登录"
             }
+          },
+          {
+            path:"/list",
+            name:"list",
+            component:()=>import('@/pages/order/list'),
+            meta:{
+              name:"订单列表"
+            }
           }
       ]
 })

@@ -54,7 +54,7 @@ export default {
         z-index: 9999;
     }
     .ser-content{
-        width: 300px;
+        width: 18.75rem;
         background: #fff;
         padding: 15px 20px 10px;
         border-radius: 16px;

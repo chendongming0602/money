@@ -2,12 +2,12 @@
     <div>
         <div class="tab2-top">
             <div>
-                <img  src="../../assets/imgs/all/logo.jpg" alt="logo" >
+                <img  src="@/assets/imgs/all/logo.jpg" alt="logo" >
                 用户名
             </div>
         </div>
         <div class="tab2-list">
-            <router-link to="">
+            <router-link to="/list">
                 <div class="tab2-item">
                     <van-icon name="cart-circle" color="#62c8ca" size="1.8rem" />
                     <div>我的订单</div>
