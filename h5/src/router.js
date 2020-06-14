@@ -79,6 +79,14 @@ const router=new Router({
             meta:{
               name:"订单列表"
             }
+          },
+          {
+            path:"/add",
+            name:"add",
+            component:()=>import('@/pages/order/add'),
+            meta:{
+              name:"添加订单"
+            }
           }
       ]
 })
