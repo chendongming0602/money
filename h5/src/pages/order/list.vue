@@ -14,10 +14,33 @@
             </div>
         </div>
 
-        <van-overlay :show="show" @click="show = false" class-name="list-over">
+        <van-overlay :show="show" class-name="list-over">
             <div  @click.stop>
                 <div class="list-over-box">
-
+                    <div class="list-close" @click="show = false"><van-icon name="cross" color="#62c8ca" size="1.2rem" /></div>
+                    <div class="list-s-title">订单详情</div>
+                    <div class="list-s-plat">
+                        <div>部署平台</div>
+                        <div class="list-s-p-item">
+                            <div v-for="(t,i) in plat" :key="i">{{t.name}}</div>
+                        </div>
+                    </div>
+                    <div class="list-s-time">
+                        <div>订单完成时间</div>
+                        <div>1263年10月13日</div>
+                    </div>
+                    <div class="list-s-money">
+                       订单金额
+                       <div>￥<span>1323</span></div>
+                   </div>
+                   <div class="list-s-more">
+                        更多订单说明
+                        <div>是都放假哦电视剧佛山的交际费收到了分开交地税缴费极地</div>
+                   </div>
+                   <div class="list-s-s">
+                       订单状态
+                       <div>点击支付</div>
+                   </div>
                 </div>
             </div>
         </van-overlay>
@@ -27,12 +50,18 @@
 export default {
     data(){
         return{
-            show:false
+            show:true,
+            plat:[
+                {name:"H5网页"},
+                {name:"微信H5"},
+                {name:"移动APP"},
+                {name:"微信小程序"},
+            ],
         }
     },
     methods:{
         listLook(){
-            this.show=true;
+            this.show=false;
         }
     }
 }
@@ -101,7 +130,108 @@ export default {
     }
     .list-over-box{
         width: 300px;
-        height: 500px;
+        padding: 20px;
+        border-radius: 10px;;
         background: #fff;
+        position: relative;
+        .list-close{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .list-s-title{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            padding-bottom: 10px;
+        }
+        .list-s-plat{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            >div:nth-child(1){
+                font-weight: bold;
+                color: $color;
+                min-width: 80px;
+            }
+            .list-s-p-item{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                flex-grow: 1;
+                div{
+                    padding: 5px 10px;
+                    font-size: 12px;
+                    background: $color;
+                    color: $colorF;
+                    margin-top: 10px;
+                    border-radius: 5px;
+                    text-align: center;
+                }
+            }
+        }
+        .list-s-time{
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            div{
+                font-size: 12px;
+                color: #999;
+            }
+            div:nth-child(1){
+                font-weight: bold;
+                font-size: 14px;
+                color: $color;
+                margin-right: 10px;
+            }
+        }
+        .list-s-more{
+            text-align: center;
+            margin-top: 30px;
+            color: $color;
+            font-weight: bold;
+            div{
+                padding: 10px;
+                background: #f2f2f2;
+                font-size: 12px;
+                border-radius: 5px;
+                margin-top: 10px;
+                text-align: left;
+                line-height: 20px;
+                letter-spacing: 2px;
+            }
+        }
+        .list-s-money{
+            display: flex;
+            font-weight: bold;
+            color: $color;
+            margin-top: 30px;
+            align-items: center;
+            div{
+                margin-left: 10px;
+                font-size: 18px;
+                color: crimson;
+                font-weight: bold;
+                span{
+                    color: crimson;
+                }
+            }
+        }
+    }
+    .list-s-s{
+        text-align: center;
+        margin-top: 30px;
+        font-weight: bold;
+        color: $color;
+        div{
+            margin-top: 20px;
+            padding: 10px;
+            background: $color;
+            color: $colorF;
+            border-radius: 5px;
+            font-weight: bold;
+        }
     }
 </style>

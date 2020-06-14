@@ -30,7 +30,7 @@ export default {
             ban:[
                 {
                     img:"assets/imgs/all/logo.jpg",
-                    path:"/reg"
+                    path:"/add"
                 },
                 {
                     img:"assets/imgs/all/logo.jpg",

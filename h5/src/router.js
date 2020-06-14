@@ -26,11 +26,11 @@ const router=new Router({
   routes: [
           {
             path:"/",
-            redirect:"/index"
+            redirect:"/tab1"
           },
           //主页
           {
-            path:"/index",
+            path:"/",
             name:"index",
             component:() => import('@/pages/index/index.vue'),
             meta:{

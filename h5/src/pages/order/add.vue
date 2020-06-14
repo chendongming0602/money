@@ -58,6 +58,8 @@
     </div>
 </template>
 <script>
+import { Notify } from 'vant';
+import { Dialog } from 'vant';
 export default {
     data(){
         return{
@@ -83,6 +85,12 @@ export default {
     },
     methods:{
         onSubmit(values) {
+            if(this.platValue.length===0) return Notify({ type: 'danger', message: '至少选泽一项部署平台！' });
+            if(!this.timeValue) return Notify({ type: 'danger', message: '请选泽结束时间！' });
+            Dialog.confirm({
+                title: '提交成功',
+                message: '是否跳转到订单列表？',
+            })
             console.log('submit', values);
         },
         onClass(e){
