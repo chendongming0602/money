@@ -52,7 +52,7 @@ const axios=function({path,method="GET",data={}}={}){
         let datas={params:{...data}}
         if(method==="POST") datas={...{data}};
         axiosP({
-            url:`${config.host}${path}`,
+            url:`/api${path}`,
             method,
             ...datas
         }).then(res=>{

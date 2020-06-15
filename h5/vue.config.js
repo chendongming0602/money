@@ -1,5 +1,15 @@
 
 module.exports = {
+	//代理跨域
+    devServer:{ 
+        "proxy":{
+            "/api":{
+                target:"http://127.0.0.1:3000",
+                pathRewrite:{"^/api":""}
+            }
+        }
+    },
+  	productionSourceMap: false,//隐藏代码
 	//配置全局样式变量
 	css: {
 		loaderOptions: {

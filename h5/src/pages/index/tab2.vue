@@ -13,9 +13,13 @@
                     <div>我的订单</div>
                 </div>
             </router-link>
-            <div class="tab2-item">
+            <div class="tab2-item" @click="$refs.ser.showEvent()">
                 <van-icon name="manager" color="#62c8ca" size="1.8rem" />
-                <div @click="$refs.ser.showEvent()">我的客服</div>
+                <div >我的客服</div>
+            </div>
+            <div class="tab2-item">
+                <van-icon name="share" color="#62c8ca" size="1.8rem" />
+                <div>退出登录</div>
             </div>
         </div>
         <!-- 客服 -->

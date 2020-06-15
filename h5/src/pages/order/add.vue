@@ -13,11 +13,18 @@
                 />
             </van-popup>
 
-            <div class="add-title">部署平台</div>
-            <div class="add-plat">
-                <van-checkbox-group v-model="platform" direction="horizontal" @change="pleatEvent">
-                    <van-checkbox v-for="(t,i) in plat" :key="i" checked-color="#62c8ca" :name="i" class="add-plat-item" >{{t.name}}</van-checkbox>
-                </van-checkbox-group>
+            <div>
+                <div class="add-title">是否部署</div>
+                <div class="add-is"><van-checkbox v-model="checked" checked-color="#62c8ca">部署</van-checkbox></div>
+            </div>
+
+            <div>
+                <div class="add-title">产品类型</div>
+                <div class="add-plat">
+                    <van-checkbox-group v-model="platform" direction="horizontal" @change="pleatEvent">
+                        <van-checkbox v-for="(t,i) in plat" :key="i" checked-color="#62c8ca" :name="i" class="add-plat-item" >{{t.name}}</van-checkbox>
+                    </van-checkbox-group>
+                </div>
             </div>
 
             <div class="add-title">订单完成时间</div>
@@ -76,6 +83,8 @@ export default {
             showTime:false,
             timeValue:null,
             mTime:"00:00:00",
+            //是否部署
+            checked:false,
             //更多说明
             message:"",
             //部署多选结果
@@ -174,5 +183,9 @@ export default {
         span{
             color:$colorF;
         }
+    }
+    .add-is{
+        padding: 20px 0;
+        border-bottom: 1px solid $border;
     }
 </style>
