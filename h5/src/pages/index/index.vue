@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="index-title">哈哈哈哈</div>
+        <!-- <div class="index-title">哈哈哈哈</div> -->
         <router-view></router-view>
         <Tabs @tabs="tabsEvent" :index="index"></Tabs>
         <div class="index-bottom"></div>

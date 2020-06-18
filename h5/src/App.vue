@@ -1,11 +1,11 @@
 <template>
  <div class="app-container">
-    <div v-if="$route.path!=='/tab1'&&$route.path!=='/tab2'&&$route.path!=='/index'" class="app-title" @click="$router.go(-1)">
+    <!-- <div v-if="$route.path!=='/tab1'&&$route.path!=='/tab2'&&$route.path!=='/index'" class="app-title" @click="$router.go(-1)">
       <div>
          <van-icon name="arrow-left"  size="1.3rem" />
       </div>
       {{$route.meta.name}}
-    </div>
+    </div> -->
      <!-- <e-xam01></e-xam01> -->
    <router-view ></router-view>
  </div>
