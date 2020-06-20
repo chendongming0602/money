@@ -18,7 +18,7 @@
                 <van-field
                     v-model="values.pwd"
                     type="password"
-                    name="pwd"
+                    name="password"
                     label="密码"
                     clearable
                     required
@@ -68,8 +68,8 @@ export default {
             values:{
                 phone: '15659914166',
                 pwd: 'a1565991416',
-                sms:"",
-                name:""
+                sms:"123",
+                name:"陈栋明"
             },
             sec:0,
             text:"获取验证码",
@@ -79,7 +79,18 @@ export default {
         }
     },
     methods: {
+        regPOST(data){
+            data.account=data.phone;
+            this.axios({
+                path:"/user/user/enrollment",
+                method:"POST",
+                data
+            }).then(res=>{
+                console.log(res)
+            })
+        },
         onSubmit(values) {
+            this.regPOST(values)
             console.log('submit', values);
         },
         //点击了获取验证码

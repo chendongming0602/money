@@ -56,11 +56,12 @@ const axios=function({path,method="GET",data={}}={}){
             method,
             ...datas
         }).then(res=>{
-            if(res.data.code===1){
-                resolve(res.data.data)
-            }else{
-                reject(res.data)
-            }
+            console.log(res)
+            // if(res.data.code===1){
+            //     resolve(res.data.data)
+            // }else{
+            //     reject(res.data)
+            // }
         }).catch(err=>{reject(err)})
     })
 };

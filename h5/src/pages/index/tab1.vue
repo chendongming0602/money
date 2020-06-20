@@ -43,8 +43,16 @@ export default {
             ]
         }
     },
+    methods:{
+        async listGET(){
+            let res=await this.axios({
+                path:"/index/index/getAll"
+            });
+            console.log(res)
+        }
+    },
     created(){
-        
+        this.listGET();
     }
 }
 </script>

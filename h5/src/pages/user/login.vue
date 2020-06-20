@@ -6,7 +6,7 @@
                 <van-field
                     class="reg-input"
                     v-model="values.phone"
-                    name="phone"
+                    name="account"
                     clearable
                     :error="false"
                     type="tel"
@@ -40,13 +40,21 @@ export default {
     data(){
         return{
             values:{
-                phone:"",
-                pwd:""
+                phone:"15659914166",
+                pwd:"a1565991416"
             }
         }
     },
     methods:{
+        async loginPOST(data){
+            this.axios({
+                path:"/user/user/login",
+                method:"POST",
+                data
+            })
+        },
         onSubmit(values) {
+            this.loginPOST(values)
             console.log('submit', values);
         },
         isPhone(val){
