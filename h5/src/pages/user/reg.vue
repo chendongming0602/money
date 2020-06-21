@@ -61,6 +61,7 @@
     </div>
 </template>
 <script>
+import { Notify } from 'vant';
 let time1=null;
 export default {
     data(){
@@ -86,7 +87,15 @@ export default {
                 method:"POST",
                 data
             }).then(res=>{
+                Notify({
+                    message: '注册成功',
+                    color: '#fff',
+                    background: '#62c8ca',
+                });
+                this.$router.push("/login")
                 console.log(res)
+            }).catch(err=>{
+                Notify("注册失败！")
             })
         },
         onSubmit(values) {

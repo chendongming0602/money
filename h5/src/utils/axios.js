@@ -47,6 +47,7 @@ axiosP.interceptors.response.use(response => {//相应拦截
     }
 );
 // axiosP.defaults.baseURL=""
+// axiosP.defaults.withCredentials = true; 
 const axios=function({path,method="GET",data={}}={}){
     return new Promise((resolve,reject)=>{
         let datas={params:{...data}}
@@ -57,11 +58,8 @@ const axios=function({path,method="GET",data={}}={}){
             ...datas
         }).then(res=>{
             console.log(res)
-            // if(res.data.code===1){
-            //     resolve(res.data.data)
-            // }else{
-            //     reject(res.data)
-            // }
+            if(res.data.code===200) return resolve(res.data);
+            reject(res.data);
         }).catch(err=>{reject(err)})
     })
 };

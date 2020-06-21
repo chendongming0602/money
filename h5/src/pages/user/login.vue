@@ -18,7 +18,7 @@
                 <van-field
                     v-model="values.pwd"
                     type="password"
-                    name="pwd"
+                    name="password"
                     label="密码"
                     clearable
                     required
@@ -36,6 +36,7 @@
     </div>
 </template>
 <script>
+import { Notify } from 'vant';
 export default {
     data(){
         return{
@@ -51,6 +52,15 @@ export default {
                 path:"/user/user/login",
                 method:"POST",
                 data
+            }).then(res=>{
+                Notify({
+                    message: '登录成功',
+                    color: '#fff',
+                    background: '#62c8ca',
+                });
+                
+            }).catch(err=>{
+                Notify("登录失败！")
             })
         },
         onSubmit(values) {
@@ -60,6 +70,10 @@ export default {
         isPhone(val){
             return /^((\+86|0086)\s+)?1[3-8]\d{9}$/.test(val);
         },
+    },
+    created(){
+        var strcookie = document.cookie;
+        console.log(strcookie)
     }
 }
 </script>
