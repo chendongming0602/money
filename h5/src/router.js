@@ -107,7 +107,12 @@ const router=new Router({
         document.title = to.meta.name;
       }
     }catch(err){}
-    next()
+    let sessionToken=JSON.parse(sessionStorage.getItem("store"))||'',storeToken=store.getters.token;
+    //未登录
+    if(!storeToken&&!sessionToken.token&&to.path!=="/login"&&to.path!=="/reg") return next("/login");
+    //已经登录
+    if((storeToken||sessionToken.token)&&(to.path==="/login"||to.path==="/reg")) return next("/");
+    next();
     // console.log(sessionStorage["token"])
     // let sessionToken=JSON.parse(sessionStorage.getItem("store"))||'',storeToken=store.getters.getToken;
     // if(to.meta.is===true){//需要判断是否登录

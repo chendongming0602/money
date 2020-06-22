@@ -4,17 +4,18 @@ import Vue from 'vue'
 import axiosP from 'axios';
 import router from '../router';
 import store from '@/store'//引入store(vuex)
-import {config} from '@/utils/config'//引入公用文件
+import { Notify } from 'vant';
+//import {config} from '@/utils/config'//引入公用文件
 axiosP.defaults.timeout =3000;//请求超时时间
 
 axiosP.interceptors.request.use(//请求拦截
     config => {
         // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         // let token =sessionStorage.getItem('token');
-        // let token=store.getters.getToken;
-        // if (token) {//如果有token给请求头加上
-        //     config.headers.common['token'] =token
-        // }
+        let token=store.getters.token;
+        if (token) {//如果有token给请求头加上
+            config.headers.common['token'] =token
+        }
         return config
     },
 
@@ -25,21 +26,10 @@ axiosP.interceptors.request.use(//请求拦截
 )
 
 axiosP.interceptors.response.use(response => {//相应拦截
-    // try{
-    //     let {token}=response.data;
-    //     if(token){//将登陆的返回的token保存下来
-    //         store.dispatch('tokenChange',token);
-    //     }
-        
-    // }catch(err){
-    //     console.log("在相应拦截这边其他请求不需要取token",err)
-    // };
-  
-    // if(response.data.code==10001||response.data.code==402){//如果token为空或者过期，跳到登录
-    //     store.dispatch('tokenChange',"");
-    //     router.push({path:"/login"});
-       
-    // }
+    if(response.data.code==401){//如果token为空或者过期，跳到登录
+        store.dispatch("token","");
+        router.push({path:"/login"});
+    }
     return response;
 }
     ,err=>{
@@ -57,10 +47,13 @@ const axios=function({path,method="GET",data={}}={}){
             method,
             ...datas
         }).then(res=>{
-            console.log(res)
-            if(res.data.code===200) return resolve(res.data);
+            if(res.data.code===200) return resolve(res.data.data);
             reject(res.data);
-        }).catch(err=>{reject(err)})
+            Notify(res.data.msg||'数据出错了~~~');
+        }).catch(err=>{
+            Notify('数据出错了~~~');
+            reject(err)
+        })
     })
 };
 // let adminEvents=()=>{//判断是否为高级会员

@@ -6,14 +6,15 @@ const state={//要设置的全局访问的state对象
     sms:0,
     //保存目前在哪个tab
     tab:0,
+    token:"",
+    //用户信息
+    user:{}
 };
 const getters={//读取值(this.$store.getters.isList)
-    sms(state){
-        return state.sms
-    },
-    tab(state){
-        return state.tab
-    }
+    sms:state=>state.sms,
+    tab:state=>state.tab,
+    token:state=>state.token,
+    user:state=>state.user,
 };
 const mutations={//同步修改值(this.$store.commit("changeList",this.list2);)
     sms(state,value){
@@ -21,15 +22,22 @@ const mutations={//同步修改值(this.$store.commit("changeList",this.list2);)
     },
     tab(state,value){
         state.tab=value
+    },
+    token(state,value){
+        state.token=value
+    },
+    user(state,value){
+        state.user=value
     }
 }
 const actions={//异步修改值(this.$store.dispatch('actionChange',this.list3))
-    userInfoChange(context,value){
-        context.commit("userInfo",value)
+    user(context,value){
+        context.commit("user",value)
     },
-    tokenChange(context,value){
-        context.commit("tokenMuta",value)
-    }
+    token(context,value){
+        context.commit("token",value)
+    },
+    
 }
 const store = new Vuex.Store({
       state,

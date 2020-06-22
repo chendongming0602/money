@@ -49,13 +49,20 @@
                         placeholder="请输入验证码"
                         :rules="[{ required: true, message: '请输入验证码' }]"
                     />
-                    <van-button :disabled="!isSms"  type="primary" round class="reg-check-but" @click="smsEvent">{{text}}</van-button>
+                    <van-button :disabled="!isSms"  type="primary" native-type="button" round class="reg-check-but" @click="smsEvent">{{text}}</van-button>
                 </div>
                 <div class="reg-submit">
                     <van-button round block  >
-                        注册
+                        注册账号
                     </van-button>
                 </div>
+                <router-link to="/login">
+                    <div class="reg-submit reg-login">
+                        <van-button round block  native-type="button">
+                            登录
+                        </van-button>
+                    </div>
+                </router-link>
             </van-form>
         </div>
     </div>
@@ -99,7 +106,7 @@ export default {
             })
         },
         onSubmit(values) {
-            this.regPOST(values)
+            // this.regPOST(values)
             console.log('submit', values);
         },
         //点击了获取验证码
@@ -186,13 +193,19 @@ export default {
         }
     }
     .reg-submit{
-        margin: 30px 16px;
+        margin: 30px 16px 20px;
         button{
             background: $color;
             font-size: .75rem;
         }
         span{
             color:$colorF;
+        }
+    }
+    .reg-login{
+        margin-top: 0px;
+        button{
+            background: #ccc;
         }
     }
 </style>

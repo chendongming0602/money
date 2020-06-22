@@ -102,6 +102,17 @@ export default {
             })
             console.log('submit', values);
         },
+        addPOST(){
+            let data={
+                orderType:"平台下单",
+                deploy:this.checked
+            }
+            this.axios({
+                path:"/order/order/submit",
+                method:"POST",
+                data
+            })
+        },
         onClass(e){
             console.log(e)
         },

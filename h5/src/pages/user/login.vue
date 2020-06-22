@@ -30,6 +30,13 @@
                         登录
                     </van-button>
                 </div>
+                <router-link to="/reg">
+                    <div class="reg-submit reg-login">
+                        <van-button round block  native-type="button">
+                            注册账号
+                        </van-button>
+                    </div>
+                </router-link>
             </van-form>
         </div>
 
@@ -53,27 +60,27 @@ export default {
                 method:"POST",
                 data
             }).then(res=>{
+                this.$store.dispatch("token",res);
                 Notify({
                     message: '登录成功',
                     color: '#fff',
                     background: '#62c8ca',
                 });
-                
+                this.$router.push("/");
             }).catch(err=>{
-                Notify("登录失败！")
+                Notify("请输入正确用户名或者密码！")
             })
         },
         onSubmit(values) {
             this.loginPOST(values)
-            console.log('submit', values);
+            // console.log('submit', values);
         },
         isPhone(val){
             return /^((\+86|0086)\s+)?1[3-8]\d{9}$/.test(val);
         },
     },
     created(){
-        var strcookie = document.cookie;
-        console.log(strcookie)
+       
     }
 }
 </script>
@@ -94,13 +101,19 @@ export default {
         }
     }
     .reg-submit{
-        margin: 30px 16px;
+        margin: 30px 16px 20px;
         button{
             background: $color;
             font-size: .75rem;
         }
         span{
             color:$colorF;
+        }
+    }
+    .reg-login{
+        margin-top: 0px;
+        button{
+            background: #ccc;
         }
     }
 </style>

@@ -3,7 +3,7 @@
         <div class="tab2-top">
             <div>
                 <img  src="@/assets/imgs/all/logo.jpg" alt="logo" >
-                用户名
+                {{list.name}}
             </div>
         </div>
         <div class="tab2-list">
@@ -27,15 +27,32 @@
     </div>
 </template>
 <script>
-import Service from "@/components/service/service"
+import Service from "@/components/service/service";
 export default {
     data(){
         return{
-            show:true
+            show:true,
+            list:{}
+        }
+    },
+    methods:{
+        async listGET(){
+            let token=this.$store.getters.token
+            let res=await this.axios({
+                path:"/user/user/userInfo",
+                data:{
+                    token
+                }
+            });
+            this.$store.dispatch("user",res);
+            this.list=res;
         }
     },
     components:{
         Service
+    },
+    created(){
+        this.listGET();
     }
 }
 </script>

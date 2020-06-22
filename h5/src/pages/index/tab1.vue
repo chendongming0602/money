@@ -14,9 +14,8 @@
                     <div class="tab1-item">
                         <img :src="require('@/'+t.img)" alt="ban">
                         <div class="tab1-item-title">点击下单</div>
-                        <div class="tab1-tiem-count">已成交<span>666</span>单</div>
+                        <div class="tab1-tiem-count">已成交<span>{{list.totalOrders*t.count}}</span>单</div>
                     </div>
-                    
                 </router-link>
             </div>
         </div>
@@ -30,25 +29,29 @@ export default {
             ban:[
                 {
                     img:"assets/imgs/all/logo.jpg",
-                    path:"/add"
+                    path:"/add",
+                    count:2
                 },
                 {
                     img:"assets/imgs/all/logo.jpg",
-                    path:"/login"
+                    path:"/add",
+                    count:1
                 },
                 {
                     img:"assets/imgs/all/logo.jpg",
-                    path:"/login"
+                    path:"/add",
+                    count:8
                 },
-            ]
+            ],
+            list:{}
         }
     },
     methods:{
         async listGET(){
             let res=await this.axios({
-                path:"/index/index/getAll"
+                path:"/index/index/getAll",
             });
-            console.log(res)
+            this.list=res;
         }
     },
     created(){
