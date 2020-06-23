@@ -9,7 +9,8 @@
                 </div>
                 <div>
                     <div class="list-active">状态</div>
-                    <div class="list-money">¥<span>100</span></div>
+                    <!-- <div class="list-money">¥<span>100</span></div> -->
+                    <div class="list-tj">¥：正在统计</div>
                 </div>
             </div>
         </div>
@@ -90,8 +91,17 @@ export default {
     },
     methods:{
         listLook(){
-            this.show=false;
+            this.show=true;
+        },
+        async listGET(){
+            let res=await this.axios({
+                path:"/order/order/getMyList"
+            });
+            console.log(res)
         }
+    },
+    created(){
+        this.listGET()
     }
 }
 </script>
@@ -138,6 +148,13 @@ export default {
                 margin-bottom: 5px;
                 color: #fff;
                 transform: scale(0.9);
+            }
+            .list-tj{
+                font-size: 12px;
+                border-top: 2px solid $border;
+                padding-top: 8px;
+                color: #999;
+                transform: scale(0.8);
             }
             .list-money{
                 margin-top: 5px;
@@ -327,4 +344,5 @@ export default {
             }
         }
     }
+
 </style>
